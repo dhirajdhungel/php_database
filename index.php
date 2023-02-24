@@ -11,36 +11,54 @@
 
 <body>
     <div class="cont-1">
-    <div class="cont-2">
-    <table>
-        <tr class="header">
-            <th>User Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone. No</th>
-            <th>Edit & Delete</th>
-        </tr>
-        <?php
-        include_once('connect.php');
-        $sql = "SELECT * FROM userdata";
-        $result = $conn->query($sql);
+        <form method="post" action="form.php"> <input type="submit" value="Insert Data" class="insert-btn"></form>
+        <div class="cont-2">
+            <table class="data-table">
+                <tr class="header">
+                    <th>User Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone. No</th>
+                    <th>Edit & Delete</th>
+                </tr>
+                <?php
+                include_once('connect.php');
+                $sql = "SELECT * FROM userdata";
+                $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>"
-                    . $row["user_id"] . "</td><td>"
-                    . $row["name"] . "</td><td>"
-                    . $row["email"] . "</td><td>"
-                    . $row["phone"] . "</td><td>"
-                    . "<input type='submit' class='btn btn-edit' value='Edit'>"
-                    . "<input type='submit' class='btn btn-delete' value='Delete'>"
-                    . "</td></tr>";
-            }
-        }
-        ?>
-    </table>
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        ?>
+                       <tr>
+                        <td>
+                            <?php echo $row["user_id"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["name"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["email"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["phone"]; ?>
+                        </td>
+                        <td>
+                            <span> <a href="edit.php?id=<?php echo $row["user_id"]; ?>"> Edit</a> </span>
+                            <form method='post' action='delete.php'><input type='submit' class='btn btn-delete' name='delete-data' value='Delete'></form>
 
-    </div>
+                        </td>
+                       </tr>
+                             <?php
+                    }
+                }else{
+                    echo ' <style>table{display:none;}</style> ';
+                    echo '<h1>Empty Database: Click on Insert to add.</h1>';
+                }
+
+                ?>
+            </table>
+
+        </div>
     </div>
 </body>
 

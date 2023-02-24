@@ -1,13 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Mynerve&display=swap");
 
 *{
+    margin: 0;
+    padding: 0;
     font-family: monospace;
+    font-size: x-large;
     box-sizing: border-box;
+}
+
+.heading1{
+    text-align: center;
+    color: white;
+    font-size: x-large;
+    font-weight: bolder;
 }
 
 .cont-1{
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .cont-2{
     display: flex;
@@ -20,8 +31,12 @@ table{
     border: 2px solid black;
     border-radius: 5px;
 }
+.data-table th{
+    color: #ffffff;
+    background-color: #008062;
+}
 
-th, td{
+ th, td{
     padding: 0.5em 1em;
     border-radius: 2.5px;
 }
@@ -29,12 +44,10 @@ th, td{
 body{
     overflow-x:auto;
 }
-
-.header{
-    color: #ffffff;
-    background-color: #008062;
+.btn-container{
+    display: flex;
+    flex-direction: row;
 }
-
 .btn{
     color: white;
     border: none;
@@ -56,3 +69,77 @@ body{
 .btn-delete:hover{
     background-color: #8e0a0a;
 }
+
+.insert-btn{
+    padding: 1em;
+    margin: 1em;
+    color: #ffffff;
+    background-color: #2267d7;
+    border: none;
+    border-radius: 10px;
+}
+.insert-btn:hover{
+    background-color: #1c4fa1;
+}
+
+
+
+
+//form file
+
+
+$bg: #AD3A4E;
+$bg2: #e7a0a5;
+$fg: #F7C4A7;
+$fg2: #ffeee4;
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: $bg;
+  }
+  
+  .form-input[type=text],[type=password] {
+    border: 2px solid $fg;
+    width: 50vw;
+    height: 40px;
+    background-color: $bg2;
+    color: white;
+    font-size: x-large;
+    border-radius: 5px;
+    transition:  1s;
+  }
+  
+  input[type=text],[type=password]:focus {
+      appearance: none;
+      border-radius: 10px;
+    }
+  
+  .submit-btn{
+      float: right;
+      color: $fg2;
+      font-weight: bolder;
+      font-size: large;
+      margin: 1em;
+      padding: 1em;
+      background-color: $bg2;
+      border: 2px solid $bg;
+      border-radius: 10px;
+  }
+  .submit-btn:hover{
+      color: white;
+      background-color: #2F9F8C;
+  }
+  
+  label {
+    color: $fg;
+    font-size: x-large;
+  }
